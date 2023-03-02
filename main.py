@@ -1,15 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
-
-def guess_centroid(list1, list2):
-    plt.scatter(list1, list2)
-    plt.show()
-    guess = input('Input Centroid Locations: ')
-    guess = eval(guess)  # if written as coordinate points gives tuple or tuple of tuples
-    # print(type(guess[0][1]))
-    return guess
+import func
 
 
 # change column names
@@ -34,5 +26,6 @@ normspeed_list = d_df['norm speed'].values.tolist()
 # plt.scatter(normdist_list, normspeed_list)
 # plt.show()
 
-guess_centroid(normdist_list, normspeed_list)
+# func.guess_centroid(normdist_list, normspeed_list)
 
+func.distance(normdist_list, normspeed_list, ((-.5, 1), (2, .5), (2, 3), (-.5, 1.5)))
