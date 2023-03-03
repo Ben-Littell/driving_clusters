@@ -28,4 +28,4 @@ normspeed_list = d_df['norm speed'].values.tolist()
 
 # func.guess_centroid(normdist_list, normspeed_list)
 
-func.distance(normdist_list, normspeed_list, ((-.5, 1), (2, .5), (2, 3), (-.5, 1.5)))
+func.main(normdist_list, normspeed_list, ((-.5, .5), (-.5, 1.5), (2, 0), (2, 4), (1, 3)))

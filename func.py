@@ -1,10 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-
-
-def plot(x, y):
-    plt.scatter(x, y)
+import statistics as stats
 
 
 def guess_centroid(list1, list2):
@@ -19,10 +16,12 @@ def guess_centroid(list1, list2):
 def distance(l1, l2, centroids=None):
     if centroids is None:
         centroids = guess_centroid(l1, l2)
+    # creates dictionary
     new_dict = {}
     for val in centroids:
         new_dict[val] = []
     # print(new_dict)
+    # assign to centroids
     for i in range(len(l1)):
         dist_l = []
         for c in centroids:
@@ -33,9 +32,34 @@ def distance(l1, l2, centroids=None):
     for v in centroids:
         x = [l1[k] for k in new_dict[v]]
         y = [l2[k] for k in new_dict[v]]
-        plot(x, y)
+        plt.scatter(x, y)
+        plt.plot([v[0]], [v[1]], 'k', marker='D')
     # print(len(c1)+len(c2))
     # plt.scatter(c1x, c1y)
     # plt.scatter(c2x, c2y)
     plt.show()
+    return new_dict
+
+
+def new_centroid(l1, l2, dict):
+    c = []
+    for v in dict:
+        cx = stats.mean([l1[k] for k in dict[v]])
+        cy = stats.mean([l2[k] for k in dict[v]])
+        c.append((cx, cy))
+    return c
+
+
+def main(l1, l2, centroids=None, rep=4):
+    for n in range(rep):
+        d1 = distance(l1, l2, centroids)
+        centroids = new_centroid(l1, l2, d1)
+    # print(centroids)
+    # d2 = distance(l1, l2, centroids)
+    # centroids = new_centroid(l1, l2, d2)
+    # d3 = distance(l1, l2, centroids)
+    # centroids = new_centroid(l1, l2, d3)
+    # d4 = distance(l1, l2, centroids)
+
+
 
