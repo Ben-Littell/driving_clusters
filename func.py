@@ -30,14 +30,9 @@ def distance(l1, l2, centroids=None):
         new_dict[centroids[dist_l.index(min(dist_l))]].append(i)
     # to make fully recursive try making a plot function then call that in a loop with a plt.show() at the end
     # have the function be looped through depending on the number of centroids
-    # turn the lists below into one large list of lists to make it universal with any number of centroids
-    # c1x = [l1[k] for k in new_dict[centroids[0]]]
-    # c1y = [l2[k] for k in new_dict[centroids[0]]]
-    # c2x = [l1[k] for k in new_dict[centroids[1]]]
-    # c2y = [l2[k] for k in new_dict[centroids[1]]]
-    for v in range(len(centroids)):
-        x = [l1[k] for k in new_dict[centroids[v]]]
-        y = [l2[k] for k in new_dict[centroids[v]]]
+    for v in centroids:
+        x = [l1[k] for k in new_dict[v]]
+        y = [l2[k] for k in new_dict[v]]
         plot(x, y)
     # print(len(c1)+len(c2))
     # plt.scatter(c1x, c1y)
